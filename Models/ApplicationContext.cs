@@ -9,7 +9,7 @@ namespace GrpcService.Models
         public DbSet<Account> Accounts { get; set; }
         public ApplicationContext()
         {
-         
+
             Database.EnsureCreated();
 
 
