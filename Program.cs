@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 ApplicationContext appDb = new ApplicationContext();
-appDb.Clients.Add(new Client { Id = 1, Name = "SEF", Password = "12345", Phone = 4001 });
+//appDb.Clients.Add(new Client { Id = 1, Name = "SEF", Password = "12345", Phone = 4001 });
+//appDb.SaveChanges();
 
 // Add services to the container.
 builder.Services.AddGrpc();

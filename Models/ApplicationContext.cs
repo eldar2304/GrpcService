@@ -10,6 +10,7 @@ namespace GrpcService.Models
         public ApplicationContext()
         {
 
+            Console.WriteLine( Database.GenerateCreateScript());
             Database.EnsureCreated();
 
 
