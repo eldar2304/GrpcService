@@ -1,18 +1,24 @@
 syntax = "proto3";
 
 option csharp_namespace = "GrpcService";
-
 package cabinet;
 
 service UserAccount {
-  rpc GetUserById (UserRequest) returns (UserReply);
+  rpc GetUserById (UserIdRequest) returns (UserReply);
+  rpc GetAccountByUserId (UserIdRequest) returns (AccountReply);
+
 }
 
-message UserRequest {
+message UserIdRequest {
 	int32 id = 1;
 }
 
 message UserReply {
   string name = 1;
   int32 phone = 2;
+}
+
+message AccountReply {
+  int32 AccountNum =1;
+  int32 AccoutType = 2;
 }

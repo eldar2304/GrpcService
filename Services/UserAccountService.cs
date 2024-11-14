@@ -13,7 +13,7 @@ namespace GrpcService.Services
         }
 
 
-        public override Task<UserReply> GetUserById(UserRequest request, ServerCallContext context)
+        public override Task<UserReply> GetUserById(UserIdRequest request, ServerCallContext context)
         {
             ApplicationContext contextDb = new ApplicationContext();
             Client res = contextDb.Clients.Where(x => x.Id == request.Id).ToList().FirstOrDefault(new Client());
@@ -24,6 +24,19 @@ namespace GrpcService.Services
                 Phone = res.Phone
             });
             
+        }
+
+        public override Task<AccountReply>  GetAccountByUserId(UserIdRequest request, ServerCallContext context)
+        {
+            ApplicationContext contextDb = new ApplicationContext();
+            Account res = contextDb.Accounts.Where(x => x.ClientId == request.Id).ToList().FirstOrDefault(new Account());
+
+            return Task.FromResult(new AccountReply
+            {
+                AccountNum = res.AccountNum,
+                AccoutType = res.AccoutType
+            });
+
         }
     }
 }
